@@ -1,6 +1,10 @@
 {
   "name": "react-countdown-redirect",
   "version": "1.0.0",
+  "engines": {
+    "node": ">=22.13.0",
+    "npm": ">=11.0.0"
+  },
   "description": "A single page website that displays a loading countdown and redirects to a GitHub repository.",
   "main": "src/main.tsx",
   "scripts": {
