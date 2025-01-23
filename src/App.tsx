@@ -14,7 +14,12 @@ const App: React.FC<AppProps> = () => {
           <p>This project is currently in active development. Visit the GitHub repository to see the latest updates.</p>
           <p>Automatic redirect countdown:</p>
         <CountdownTimer />
-        <BackButton />
+        <div className="button-container">
+          <BackButton />
+          <button onClick={() => window.location.href = "https://github.com/wari-sul"} className="skip-button">
+            Skip Timer
+          </button>
+        </div>
       </div>
     </ErrorBoundary>
   );

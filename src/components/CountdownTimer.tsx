@@ -6,6 +6,10 @@ const CountdownTimer: React.FC = () => {
     const [isRunning, setIsRunning] = useState(true);
     const progress = ((30 - seconds) * 100) / 30;
 
+    const handleSkip = () => {
+        window.location.href = "https://github.com/wari-sul";
+    };
+
     useEffect(() => {
         let timeoutId: number;
         
@@ -31,9 +35,11 @@ const CountdownTimer: React.FC = () => {
             <h2>Welcome to My Project Space</h2>
             <p>Redirecting to GitHub Repository in {seconds} seconds</p>
             <LoadingBar progress={progress} />
-            <button onClick={handleStop} className="stop-button">
-                {isRunning ? 'Pause Redirect' : 'Redirect Paused'}
-            </button>
+            <div className="button-group">
+                <button onClick={handleStop} className="stop-button">
+                    {isRunning ? 'Pause Redirect' : 'Redirect Paused'}
+                </button>
+            </div>
         </div>
     );
 };

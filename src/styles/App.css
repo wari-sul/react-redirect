@@ -1,6 +1,6 @@
 /* Base styles */
 body {
-    background-color: #0a0a0a;
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
     color: #ffffff;
     font-family: 'Montserrat', sans-serif;
     display: flex;
@@ -9,17 +9,18 @@ body {
     justify-content: center;
     min-height: 100vh;
     margin: 0;
-    padding: 20px;
-    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+    padding: 10px;
+    box-sizing: border-box;
 }
 
 /* App container */
 .app {
     max-width: 800px;
     width: 100%;
-    margin: 20px auto;
-    padding: 40px;
+    margin: 10px auto;
+    padding: 20px;
     animation: fadeIn 1s ease-in;
+    box-sizing: border-box;
 }
 
 /* Typography */
@@ -57,6 +58,7 @@ p {
     animation: typeWriter 3s steps(60);
     white-space: nowrap;
     overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 /* Loading Bar */
@@ -76,24 +78,49 @@ p {
     border-radius: 10px;
 }
 
-/* Back Button */
-.back-button {
-    margin-top: 30px;
-    padding: 12px 24px;
+/* Base button styles */
+.back-button,
+.skip-button {
+    padding: 8px 16px; /* Unified desktop padding */
     background-color: rgba(255, 255, 255, 0.1);
     border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 8px;
     color: #ffffff;
     cursor: pointer;
-    transition: all 0.3s ease;
     font-family: 'Montserrat', sans-serif;
     font-weight: 500;
+    font-size: 0.9rem;
+    min-width: 100px; /* Consistent minimum width */
+    transition: all 0.3s ease;
 }
 
-.back-button:hover {
+/* Button hover effects */
+.back-button:hover,
+.skip-button:hover {
     background-color: rgba(255, 255, 255, 0.2);
     transform: translateY(-2px);
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.stop-button:hover {
+    background-color: rgba(255, 59, 48, 0.3);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 59, 48, 0.2);
+}
+
+/* Button Containers */
+.button-group {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 15px;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
 }
 
 /* Glass Effect */
@@ -105,27 +132,6 @@ p {
     border: 1px solid rgba(255, 255, 255, 0.1);
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
 }
-
-/* Stop Button */
-.stop-button {
-    margin-top: 20px;
-    padding: 12px 24px;
-    background-color: rgba(255, 59, 48, 0.2);
-    border: 1px solid rgba(255, 59, 48, 0.3);
-    border-radius: 8px;
-    color: #ffffff;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 500;
-}
-
-.stop-button:hover {
-    background-color: rgba(255, 59, 48, 0.3);
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(255, 59, 48, 0.2);
-}
-
 
 /* Animations */
 @keyframes fadeIn {
@@ -152,27 +158,59 @@ p {
 /* Responsive Design */
 @media (max-width: 600px) {
     h1 {
-        font-size: 1.8rem;
+        font-size: 1.5rem;
     }
     
     .app {
-        margin: 10px;
-        padding: 20px;
+        margin: 5px;
+        padding: 15px;
+    }
+    
+    .countdown-timer {
+        padding: 15px;
     }
     
     .countdown-timer h2 {
-        font-size: 1.4rem;
+        font-size: 1.2rem;
     }
     
-    .back-button {
-        padding: 8px 16px;
+    p {
+        font-size: 0.9rem;
+    }
+
+    /* Unified Mobile Button Sizes */
+    .back-button,
+    .skip-button,
+    .stop-button {
+        padding: 10px 20px;
+        min-width: 110px;
+        font-size: 0.85rem;
+        margin-top: 15px;
+    }
+
+    .button-container {
+        gap: 10px;
+    }
+
+    .button-group {
+        flex-direction: column;
+        align-items: center;
     }
 }
 
-/* Update responsive design for stop button */
-@media (max-width: 600px) {
+@media (max-width: 320px) {
+    h1 {
+        font-size: 1.2rem;
+    }
+    
+    .app {
+        padding: 10px;
+    }
+
+    .back-button,
+    .skip-button,
     .stop-button {
         padding: 8px 16px;
-        font-size: 0.9rem;
+        min-width: 100px;
     }
 }
